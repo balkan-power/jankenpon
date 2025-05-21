@@ -65,8 +65,14 @@ GoBtn.addEventListener("click", function(event) {
     if (NingenChoice === CPUchoice) {
         OutputofResult.innerHTML = "NOBODY WINS!"
     }
+
+    //play audio
+    const audPlay = document.getElementById("aud");
+    audPlay.currentTime = 0; //reset to start sound when spamclicked
+    audPlay.play();
 });
 
+// reset function from right click
 GoBtn.addEventListener("contextmenu", function(clear) {
     NingenChoice = 0;
     CPUchoice = 0;
