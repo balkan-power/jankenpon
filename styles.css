@@ -31,3 +31,7 @@ button:active {
 #go:active {
     background-color: rgb(169, 0, 121);
 }
+
+.hidden {
+    display: none
+}

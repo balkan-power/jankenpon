@@ -70,6 +70,31 @@ GoBtn.addEventListener("click", function(event) {
     const audPlay = document.getElementById("aud");
     audPlay.currentTime = 0; //reset to start sound when spamclicked
     audPlay.play();
+
+    //play win/lose video
+    const vidPlay = document.getElementById("winlosevid");
+    const vidSource = document.createElement("source");
+    if (NingenChoice == 2 && CPUchoice == 1 || NingenChoice == 3 && CPUchoice == 2 || NingenChoice == 1 && CPUchoice == 3) {
+        vidSource.src = "win.mp4";
+        vidSource.type = "video/mp4";
+        vidPlay.innerHTML = "";
+        vidPlay.classList.remove("hidden"); //removes from "hidden" css class, showing the video
+        vidPlay.appendChild(vidSource);
+        vidPlay.load();
+        vidPlay.play();
+    } else if (NingenChoice == CPUchoice) {
+        vidPlay.pause();
+        vidPlay.innerHTML = "";
+        vidPlay.classList.add("hidden"); //adds to "hidden" css class, hiding the video
+    } else {
+        vidSource.src = "lose.mp4";
+        vidSource.type = "video/mp4";
+        vidPlay.innerHTML = "";
+        vidPlay.classList.remove("hidden"); //this approach was taken to keep the video centred and streamline the process
+        vidPlay.appendChild(vidSource);
+        vidPlay.load();
+        vidPlay.play();
+    }
 });
 
 // reset function from right click
